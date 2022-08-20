@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Examples/Scripts/Ambient.gd" type="Script" id=1]
+[ext_resource path="res://Examples/Food.gd" type="Script" id=2]
+[ext_resource path="res://-df/icon.png" type="Texture" id=3]
+[ext_resource path="res://Examples/FoodPellet.gd" type="Script" id=4]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 7.0
+
+[node name="Ambient" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+zoom = Vector2( 2, 2 )
+
+[node name="Food" type="Node" parent="."]
+script = ExtResource( 2 )
+
+[node name="FoodPellet" type="Area2D" parent="Food"]
+script = ExtResource( 4 )
+
+[node name="Icon" type="Sprite" parent="Food/FoodPellet"]
+modulate = Color( 0.133333, 1, 0.00784314, 1 )
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 27.1228, 29.3739, 9.43243, 9.61737 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Food/FoodPellet"]
+shape = SubResource( 1 )

@@ -1,0 +1,91 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=4
+
+_global_script_classes=[ {
+"base": "Node",
+"class": "Ambient",
+"language": "GDScript",
+"path": "res://Examples/Scripts/Ambient.gd"
+}, {
+"base": "Node",
+"class": "NN_Agent",
+"language": "GDScript",
+"path": "res://BalaDeSilver-NEAT/Neural Network/NN_Agent.gd"
+}, {
+"base": "Node",
+"class": "NN_Connection",
+"language": "GDScript",
+"path": "res://BalaDeSilver-NEAT/Neural Network/NN_Connection.gd"
+}, {
+"base": "Node",
+"class": "NN_Connection_History",
+"language": "GDScript",
+"path": "res://BalaDeSilver-NEAT/Neural Network/NN_Connection_History.gd"
+}, {
+"base": "Node",
+"class": "NN_Genome",
+"language": "GDScript",
+"path": "res://BalaDeSilver-NEAT/Neural Network/NN_Genome.gd"
+}, {
+"base": "Node",
+"class": "NN_Node",
+"language": "GDScript",
+"path": "res://BalaDeSilver-NEAT/Neural Network/NN_Node.gd"
+}, {
+"base": "Node",
+"class": "NN_Population",
+"language": "GDScript",
+"path": "res://BalaDeSilver-NEAT/Neural Network/NN_Population.gd"
+}, {
+"base": "Node",
+"class": "NN_Species",
+"language": "GDScript",
+"path": "res://BalaDeSilver-NEAT/Neural Network/NN_Species.gd"
+}, {
+"base": "Node2D",
+"class": "Organism",
+"language": "GDScript",
+"path": "res://Examples/Scripts/Organism.gd"
+}, {
+"base": "Node",
+"class": "OrganismAgent",
+"language": "GDScript",
+"path": "res://Examples/Scripts/Agent.gd"
+} ]
+_global_script_class_icons={
+"Ambient": "",
+"NN_Agent": "",
+"NN_Connection": "",
+"NN_Connection_History": "",
+"NN_Genome": "",
+"NN_Node": "",
+"NN_Population": "",
+"NN_Species": "",
+"Organism": "",
+"OrganismAgent": ""
+}
+
+[application]
+
+config/name="rtNEAT-Godot"
+run/main_scene="res://Examples/Ambient.tscn"
+config/icon="res://-df/icon.png"
+
+[gui]
+
+common/drop_mouse_on_gui_input_disabled=true
+
+[physics]
+
+common/enable_pause_aware_picking=true
+
+[rendering]
+
+environment/default_environment="res://-df/default_env.tres"
