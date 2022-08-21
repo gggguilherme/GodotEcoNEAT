@@ -10,7 +10,7 @@ var next_connection_number := 0
 
 # Whenever you want to generate the network, call generate(n), where n is the number of agents you wish to create.
 func _ready():
-	generate(20)
+	generate(30)
 
 # A constructor would make this very hard to extend, so call it like My_Population.new().generate(a, b, c, d)
 func generate(size : int):
@@ -44,3 +44,7 @@ func _physics_process(_delta):
 			pop.erase(b)
 			b.body.free()
 			continue
+
+func _input(event):
+	if Input.is_action_just_pressed("ui_home"):
+		get_tree().reload_current_scene()

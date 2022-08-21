@@ -10,7 +10,7 @@ func _ready():
 		add_child(f)
 
 func _process(delta):
-	if randf() < 0.03:
+	if randf() < 0.08:
 		var f = food.duplicate()
 		f.position.x = rand_range(-1000, 1000)
 		f.position.y = rand_range(-1000, 1000)

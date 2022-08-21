@@ -82,15 +82,15 @@ func update(): # First, it will call update() regardless of active status.
 func look(): # Then, if active, it calls look().
 	vision = [
 		1.0,
-		energy / 50.0,
-		health / 50.0,
+		1 / energy,
+		1 / health,
 	]
 	vision.append_array(body.get_structure_inputs())
 
 # Then, it resolves the Network with current inputs.
 func move(): # Then, it calls move().
 	
-	var foward_velocity = decision[0] # move
+	var foward_velocity = decision[0] * 10 # move
 	var turning_right = decision[1] # turn
 	var turning_left = decision[2] # turn
 	var reproduce = decision[3] # reproduce
@@ -99,17 +99,19 @@ func move(): # Then, it calls move().
 	if foward_velocity > 0.0:
 		body.position += Vector2(cos(body.rotation), sin(body.rotation)) * foward_velocity
 		body.rotation_degrees += turning_right - turning_left
-		energy -= 0.01 * foward_velocity
+		energy -= 0.01 * foward_velocity * (sign(turning_left) * turning_right) / 2
 	
 	
 	if mouth && body.check_mouth_area():
 		digest()
 	
-	if bool(reproduce) && energy > 55.0:
+	if bool(reproduce) && energy > 90.0:
 		asex_clone()
 		
 	if energy < 0.0:
 		active = false
+	
+	energy -= 0.02
 
 func dead(): # If (active == false), then this will be executed.
 	pass # If you want it to do something if inactive, write it here.
@@ -132,7 +134,7 @@ func digest():
 		for j in i.get_node("Area").get_overlapping_areas():
 			if "Food" in j.name:
 				j.queue_free()
-				energy += 20.0 
+				energy += j.energy
 
 
 func mutate():
@@ -147,4 +149,4 @@ func asex_clone():
 	pop_ref.add_to_population(clone)
 	clone.brain.mutate(pop_ref.innovation_history)
 	clone.body.position = body.position
-	energy -= 30.0
+	energy -= 90.0

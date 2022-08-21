@@ -51,9 +51,9 @@ func get_structure_inputs():
 	var res = []
 	for i in inp:
 		if "Eye" in i.name:
-			res.append(i.get_node("Area").get_overlapping_areas().size() / 10.0)
+			res.append(i.get_node("Area").get_overlapping_areas().size() / 5.0)
 		if "Mouth" in i.name:
-			res.append(i.get_node("Area").get_overlapping_areas().size() / 10.0)
+			res.append(i.get_node("Area").get_overlapping_areas().size() / 5.0)
 	return res
 
 
